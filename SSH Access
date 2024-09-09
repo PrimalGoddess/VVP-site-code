@@ -1,6 +1,5 @@
-git@github.com:PrimalGoddess/VVP-site-code.git
-access1020408355.webspace-data.io
-22
-SFTP + SSH
-u117782408
-VakaroriaCodersOnly9924!
+Server: access1020408355.webspace-data.io
+Protocol: SFTP + SSH
+Port: 22
+User: u117782408
+Password: VakaroriaCodersOnly9924!
