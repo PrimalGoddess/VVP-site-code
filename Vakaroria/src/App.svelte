@@ -1,30 +1,36 @@
 <script>
   import Footer from "./lib/Footer.svelte";
   import Header from "./lib/Header.svelte";
-  import Main from "./lib/Main.svelte";
+  import Welcome from "./lib/Welcome.svelte";
   import Games from "./lib/Games.svelte";
   import Forum from "./lib/Forum.svelte"; 
   import HigherLower from "./lib/HigherLower.svelte";
+  import Login from "./lib/Login.svelte";
   
   import { visibleComponent } from "./lib/store";
-  // main,games,forum,higherLower
+  // welcome,games,forum,higherLower,lab,library
 </script>
 
 <div class="container">
   <Header />
   <main class="p-2 border">
-    {#if $visibleComponent === "main"}
-      <Main />
+    {#if $visibleComponent === "welcome"}
+      <Welcome />
     {/if}
-    /*{#if $visibleComponent === "games"}
+    {#if $visibleComponent === "games"}
       <Games />
     {/if}
     {#if $visibleComponent === "forum"}
       <Forum />
-    {/if}*/
+    {/if}
     {#if $visibleComponent === "higherLower"}
       <HigherLower />
-    {/if}*/
+    {/if}
+    {#if $visibleComponent === "login"}
+      <Login />
+    {/if}
   </main>
-  <Footer />
+  <Footer />{#if $visibleComponent === "higherLower"}
+      <HigherLower />
+    {/if}
 </div>
