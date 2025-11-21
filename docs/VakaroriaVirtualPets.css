@@ -119,7 +119,8 @@ header {
 
 .wrapper {
     position: relative;
-    width: 400px;
+    width: 90%;
+    max-width: 400px; /* keeps the intended size on larger screens */
     height: 440px;
     background: transparent;
     border: 4px solid #7a7dff;
@@ -299,8 +300,15 @@ header {
 
 .content {
     position: relative;
-    width: 1500px;
-    height: 800px;
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    margin-top: 180px;
+    margin-right: 2rem;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column; /* stack on narrow screens */
+    gap: 1rem;
     padding-top: 0px;
     padding-bottom: 5px;
     padding-left: 0px;
@@ -309,9 +317,6 @@ header {
     margin-bottom: 100px;
     margin-left: 0px;
     margin-right: 350px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     overflow: hidden;
     background: #00028a;
     border: 4px solid #7a7dff;
@@ -392,4 +397,22 @@ p {
 .link a:hover {
     text-decoration: underline;
     color: #7a7dff;
+}
+
+/* Add a responsive breakpoint to stack/scale content */
+@media (max-width: 900px) {
+    .content { 
+      padding: 1rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
+      width: calc(100% - 2rem);
+    }
+    .link { margin-left: 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
+}
+
+/* Mobile-specific */
+@media (max-width: 420px) {
+    .wrapper { height: auto; transform: scale(1); padding: 0.6rem; }
+    .wrapper .form-box { padding: 20px; }
+    .navigation .btnLogin-popup { width: auto; height: auto; padding: 0.6rem 0.9rem; font-size: 0.95rem; }
 }

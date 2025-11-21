@@ -104,3 +104,26 @@ div .sub{
   margin-top: 5%;
   margin-bottom: 5%;
 }
+
+/* Header / nav responsive helpers */
+.site-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+}
+
+.site-nav a, .site-nav button {
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Ensure clickable items are large enough on touch screens */
+@media (max-width: 768px) {
+  .site-nav a, .site-nav button { min-height: 44px; }
+}
