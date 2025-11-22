@@ -303,8 +303,8 @@ header {
     width: 100%;
     max-width: 1500px;
     height: auto;
-    margin-top: 180px;
-    margin-right: 2rem;
+    margin-top: auto;
+    margin-right: auto;
     margin-left: auto;
     display: flex;
     flex-direction: column; /* stack on narrow screens */
