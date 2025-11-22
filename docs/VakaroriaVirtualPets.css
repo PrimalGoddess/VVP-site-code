@@ -94,6 +94,28 @@ header {
     transform: scaleX(1);
 }
 
+/* Default desktop styles (applied in +layout.svelte <style> or app.css) */
+.nav-links {
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    justify-content: space-between;
+}
+
+/* Mobile Overrides (Triggered on screens 600px wide or smaller) */
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column; /* Vertical stacking */
+        align-items: stretch;   /* Make buttons full width */
+        padding: 0;
+    }
+    
+    .nav-links a {
+        display: block; /* Make each link take up the full width */
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
 /* Welcome Page CSS */
 .navigation .btnLogin-popup {
     width: 130px;
