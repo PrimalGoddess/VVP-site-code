@@ -430,7 +430,7 @@ p {
 }
 
 /* Add a responsive breakpoint to stack/scale content */
-@media (max-width: 900px) {
+@media (max-width: 100%) {
     .content { 
       padding: 1rem;
       margin-right: 1rem;
@@ -441,7 +441,7 @@ p {
 }
 
 /* Mobile-specific */
-@media (max-width: 420px) {
+@media (max-width: 100%) {
     .wrapper { height: auto; transform: scale(1); padding: 0.6rem; }
     .wrapper .form-box { padding: 20px; }
     .navigation .btnLogin-popup { width: auto; height: auto; padding: 0.6rem 0.9rem; font-size: 0.95rem; }
