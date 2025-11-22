@@ -72,7 +72,7 @@ header {
 
 .navigation a::after {
     content: '';
-    position: flex;
+    position: absolute;
     left: 0;
     bottom: -6px;
     width: 100%;
