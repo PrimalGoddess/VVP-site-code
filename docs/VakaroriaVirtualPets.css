@@ -49,7 +49,7 @@ header {
 }
 
 .navigation a {
-    position: flex;
+    position: static;
     font-size: 1.1em;
     color: #56ff67;
     text-decoration: none;
@@ -416,4 +416,5 @@ p {
     .wrapper .form-box { padding: 20px; }
     .navigation .btnLogin-popup { width: auto; height: auto; padding: 0.6rem 0.9rem; font-size: 0.95rem; }
 }
+
 
