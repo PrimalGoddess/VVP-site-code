@@ -23,7 +23,7 @@ body {
 }
 
 header {
-    position: flex;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -417,3 +417,4 @@ p {
     .navigation .btnLogin-popup { width: auto; height: auto; padding: 0.6rem 0.9rem; font-size: 0.95rem; }
 
 }
+
