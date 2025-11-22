@@ -38,7 +38,7 @@ h1 {
 }
 
 #app {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -124,6 +124,6 @@ div .sub{
 }
 
 /* Ensure clickable items are large enough on touch screens */
-@media (max-width: 768px) {
+@media (max-width: 100%) {
   .site-nav a, .site-nav button { min-height: 44px; }
 }
