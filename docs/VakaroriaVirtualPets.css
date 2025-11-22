@@ -130,7 +130,7 @@ header {
     box-shadow: 0 0 10px #b463ff;
     backdrop-filter: blur(20px);
     display: flex;
-    margin-bottom: 250px;
+    margin-bottom: 500px;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -316,8 +316,8 @@ header {
     padding-bottom: 5px;
     padding-left: 0px;
     padding-right: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 150px;
+    margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
