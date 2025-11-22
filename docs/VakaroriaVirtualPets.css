@@ -332,13 +332,6 @@ header {
     width: 100%;
     max-width: 1500px;
     height: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column; /* stack on narrow screens */
-    gap: 1rem;
     padding-top: 0px;
     padding-bottom: 5px;
     padding-left: 0px;
