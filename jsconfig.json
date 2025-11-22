@@ -27,6 +27,10 @@
   /**
    * Use global.d.ts instead of compilerOptions.types
    * to avoid limiting type declarations.
+   *
+   * Include all workspace files as inputs so the config works even
+   * if the `src` folder does not exist, and exclude common build folders.
    */
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte", "**/*"],
+  "exclude": ["node_modules", "dist", ".svelte-kit", ".git"]
 }
