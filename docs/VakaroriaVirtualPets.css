@@ -13,9 +13,10 @@
 }
 
 body {
-    display: static;
+    display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 125px;
     min-height: 100vh;
     background: url('Vakaroria_Banner.png') no-repeat;
     background-size: cover;
@@ -23,7 +24,7 @@ body {
 }
 
 header {
-    position: static;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -119,7 +120,7 @@ header {
 
 .wrapper {
     position: relative;
-    width: 90%;
+    width: auto;
     max-width: 400px; /* keeps the intended size on larger screens */
     height: 440px;
     background: transparent;
@@ -129,6 +130,7 @@ header {
     box-shadow: 0 0 10px #b463ff;
     backdrop-filter: blur(20px);
     display: flex;
+    margin-bottom: 250px;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -299,11 +301,12 @@ header {
 }
 
 .content {
-    position: relative;
+    position: static;
     width: 100%;
     max-width: 1500px;
     height: auto;
     margin-top: auto;
+    margin-bottom: auto;
     margin-right: auto;
     margin-left: auto;
     display: flex;
@@ -314,7 +317,7 @@ header {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: auto;
-    margin-bottom: 100px;
+    margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -416,6 +419,3 @@ p {
     .wrapper .form-box { padding: 20px; }
     .navigation .btnLogin-popup { width: auto; height: auto; padding: 0.6rem 0.9rem; font-size: 0.95rem; }
 }
-
-
-
