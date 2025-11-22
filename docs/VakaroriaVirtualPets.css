@@ -419,3 +419,8 @@ p {
     .wrapper .form-box { padding: 20px; }
     .navigation .btnLogin-popup { width: auto; height: auto; padding: 0.6rem 0.9rem; font-size: 0.95rem; }
 }
+
+img, svg {
+    max-width: 100%; /* Ensures images scale down on small screens */
+    height: auto;    /* Prevents image distortion */
+}
