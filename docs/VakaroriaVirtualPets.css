@@ -49,7 +49,7 @@ header {
 }
 
 .navigation a {
-    position: relative;
+    position: flex;
     font-size: 1.1em;
     color: #56ff67;
     text-decoration: none;
@@ -72,7 +72,7 @@ header {
 
 .navigation a::after {
     content: '';
-    position: absolute;
+    position: flex;
     left: 0;
     bottom: -6px;
     width: 100%;
