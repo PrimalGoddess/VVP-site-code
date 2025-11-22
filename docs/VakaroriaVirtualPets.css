@@ -12,6 +12,11 @@
     font-style: normal;
 }
 
+.main-container {
+    width: 100%; /* Allows it to shrink to the screen size */
+    padding: 0 10px; /* Adds space on the sides for small screens */
+}
+
 body {
     display: flex;
     justify-content: center;
