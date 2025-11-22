@@ -58,4 +58,15 @@
             </p>
         </div>
     </form>
+    import { login } from '../stores/authStore.js';
+
+async function handleLogin(credentials) {
+    const response = await fetch('/api/login', { /* ... */ });
+    if (response.ok) {
+        const userData = await response.json();
+        // Update the global store state
+        login(userData);
+        // Navigate the user to the dashboard
+    }
+}
 </div>
