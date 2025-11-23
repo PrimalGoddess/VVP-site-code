@@ -13,15 +13,19 @@
 }
 
 .main-container {
-    width: 100%; /* Allows it to shrink to the screen size */
-    padding: 0 10px; /* Adds space on the sides for small screens */
+    width: 100%; /* Keeps full width behavior when needed */
+    max-width: 100%;
+    padding: 0 10px; /* Adds space on the sides for very small screens */
+    box-sizing: border-box;
+    margin: 0 auto; /* center by default */
 }
 
 body {
     display: flex;
-    justify-content: center;
+    justify-content: safe center;
     align-items: center;
     margin-top: 125px;
+    margin-bottom: 125px;
     min-height: 100vh;
     background: url('Vakaroria_Banner.png') no-repeat;
     background-size: cover;
@@ -33,10 +37,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
     display: flex;
-    justify-content: space-between;
-    align-items: top;
+    justify-content: center;
+    align-items: flex-start;
     z-index: 99;
 }
 
@@ -118,6 +121,22 @@ header {
         display: block; /* Make each link take up the full width */
         text-align: center;
         margin-bottom: 5px;
+    }
+}
+
+/* Center main content with ~125px side margins on wide viewports */
+@media (min-width: 1000px) {
+    .main-container {
+        max-width: calc(100% - 250px); /* leaves ~125px on each side */
+        margin: 0 auto;
+    }
+}
+
+/* Reduce side margins on medium and small screens */
+@media (max-width: 999px) {
+    .main-container {
+        max-width: calc(100% - 40px);
+        margin: 0 20px;
     }
 }
 
@@ -328,33 +347,28 @@ header {
 }
 
 .content {
-    position: Absolute;
-    width: auto;
+    position: relative;
+    width: 100%;
     max-width: 100%;
     height: auto;
-    padding-top: 0px;
-    padding-bottom: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-top: 150px;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 15px 5px 15px;
+    margin: 0 auto 100px auto;
     overflow: hidden;
     background: #00028a;
     border: 4px solid #7a7dff;
     border-style: groove;
     border-radius: 10px;
     box-shadow: 0 0 10px #b463ff;
-    h3 {
-        text-align: center;
-        line-height: 25px;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        font-size: 32px;
-        font-weight: bolder;
-        color: #00ffc8;
-    }
+}
+
+.content h3 {
+    text-align: center;
+    line-height: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 32px;
+    font-weight: bolder;
+    color: #00ffc8;
 }
 
 p {
@@ -397,6 +411,35 @@ p {
     font-weight: 500;
     margin: 50px 20px;
     color: #020e4f;
+}
+
+/* Center content with ~125px side gutters on wide screens */
+@media (min-width: 1000px) {
+    .content {
+        /* Use a fixed max-width for predictable centering */
+        max-width: 1000px;
+        margin: 0 auto 100px auto; /* center horizontally */
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+
+/* Medium and small screens: keep comfortable gutters */
+@media (max-width: 999px) {
+    .content {
+        max-width: calc(100% - 40px);
+        margin: 0 20px 100px 20px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+
+/* Make large images responsive inside content */
+.content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .link .icon {
