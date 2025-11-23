@@ -17,7 +17,7 @@
     max-width: 100%;
     padding: 0 10px; /* Adds space on the sides for very small screens */
     box-sizing: border-box;
-    margin: 0 auto; /* center by default */
+    margin: 25px auto; /* center by default */
 }
 
 body {
@@ -489,3 +489,4 @@ img, svg {
     max-width: 100%; /* Ensures images scale down on small screens */
     height: auto;    /* Prevents image distortion */
 }
+
