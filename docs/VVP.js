@@ -138,4 +138,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // --- You would add the REGISTER FORM LISTENER here using 'register-form' ID ---
 });
