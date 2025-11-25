@@ -139,86 +139,93 @@ function showReply(){
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    // --- LOGIN FORM LISTENER ---
-    const loginForm = document.getElementById('login-form'); 
+function initAuthHandlers() {
+  // --- LOGIN FORM LISTENER ---
+  const loginForm = document.getElementById('login-form');
 
-    if (loginForm) {
-      loginForm.addEventListener('submit', (e) => {
-        e.preventDefault(); 
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-        const emailInput = document.getElementById('login-email');
-        const usernameInput = document.getElementById('login-username');
-        const passwordInput = document.getElementById('login-password');
+      const emailInput = document.getElementById('login-email');
+      const usernameInput = document.getElementById('login-username');
+      const passwordInput = document.getElementById('login-password');
 
-        if (!passwordInput) {
-          console.error('Login password element not found.');
-          alert('Login failed: missing password field.');
-          return;
-        }
+      if (!passwordInput) {
+        console.error('Login password element not found.');
+        alert('Login failed: missing password field.');
+        return;
+      }
 
-        const password = passwordInput.value;
-        let email = null;
+      const password = passwordInput.value;
+      let email = null;
 
-        if (emailInput && emailInput.value) {
-          email = emailInput.value;
-        } else if (usernameInput && usernameInput.value) {
-          const usernameVal = usernameInput.value.trim();
-          // If the user typed an email into the username field, use it directly
-          if (usernameVal.includes('@')) {
-            email = usernameVal;
-          } else {
-            // Synthesize the email used by the registration fallback
-            email = `${usernameVal}@example.invalid`;
-          }
+      if (emailInput && emailInput.value) {
+        email = emailInput.value;
+      } else if (usernameInput && usernameInput.value) {
+        const usernameVal = usernameInput.value.trim();
+        // If the user typed an email into the username field, use it directly
+        if (usernameVal.includes('@')) {
+          email = usernameVal;
         } else {
-          alert('Please enter your email or username.');
-          return;
+          // Synthesize the email used by the registration fallback
+          email = `${usernameVal}@example.invalid`;
         }
+      } else {
+        alert('Please enter your email or username.');
+        return;
+      }
 
-        handleSignIn(email, password);
-      });
-    }
+      handleSignIn(email, password);
+    });
+  }
 
-    // --- REGISTER FORM LISTENER ---
-    const registerForm = document.getElementById('register-form');
-    if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Prefer an element with id 'register-email' if present
-            let emailEl = document.getElementById('register-email');
-            // Otherwise try to find an <input type="email"> inside the register form
-            if (!emailEl) {
-                emailEl = registerForm.querySelector('input[type="email"]');
-            }
-            const usernameEl = document.getElementById('register-username');
-            const passwordEl = document.getElementById('register-password');
+  // --- REGISTER FORM LISTENER ---
+  const registerForm = document.getElementById('register-form');
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Prefer an element with id 'register-email' if present
+      let emailEl = document.getElementById('register-email');
+      // Otherwise try to find an <input type="email"> inside the register form
+      if (!emailEl) {
+        emailEl = registerForm.querySelector('input[type="email"]');
+      }
+      const usernameEl = document.getElementById('register-username');
+      const passwordEl = document.getElementById('register-password');
 
-            if (!passwordEl) {
-                console.error('Register password element not found.');
-                alert('Registration failed: missing password field.');
-                return;
-            }
+      if (!passwordEl) {
+        console.error('Register password element not found.');
+        alert('Registration failed: missing password field.');
+        return;
+      }
 
-            const password = passwordEl.value;
+      const password = passwordEl.value;
 
-            let email = null;
-            if (emailEl) {
-                email = emailEl.value;
-            } else if (usernameEl) {
-                // fallback: synthesize an email from username for testing only
-                const username = usernameEl.value || 'user';
-                email = `${username}@example.invalid`;
-                console.warn('No register-email id found; using synthetic email:', email);
-            }
+      let email = null;
+      if (emailEl) {
+        email = emailEl.value;
+      } else if (usernameEl) {
+        // fallback: synthesize an email from username for testing only
+        const username = usernameEl.value || 'user';
+        email = `${username}@example.invalid`;
+        console.warn('No register-email id found; using synthetic email:', email);
+      }
 
-            if (!email) {
-                console.error('No email or username available for registration.');
-                alert('Registration requires an email address.');
-                return;
-            }
+      if (!email) {
+        console.error('No email or username available for registration.');
+        alert('Registration requires an email address.');
+        return;
+      }
 
-            handleSignUp(email, password);
-        });
-    }
-});
+      handleSignUp(email, password);
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAuthHandlers);
+} else {
+  // DOM already ready
+  initAuthHandlers();
+}
