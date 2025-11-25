@@ -1,0 +1,9 @@
+connectorId: example
+generate:
+  adminNodeSdk:
+    - outputDir: ..\..\Vakaroria\src\dataconnect-admin-generated
+      package: "@dataconnect/admin-generated"
+      packageJsonDir: ..\..\Vakaroria
+    - outputDir: ..\..\docs\functions\src\dataconnect-admin-generated
+      package: "@dataconnect/admin-generated"
+      packageJsonDir: ..\..\docs\functions
