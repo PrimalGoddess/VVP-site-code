@@ -4,9 +4,7 @@ const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
-// 1. YOUR FIREBASE CONFIGURATION OBJECT
-import { initializeApp } from "firebase/app";
-
+// FIREBASE CONFIGURATION
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY", // You'll get this from the Firebase Console
   authDomain: "vvp1-f584e.firebaseapp.com",
@@ -18,16 +16,24 @@ const firebaseConfig = {
   measurementId: "G-514175645"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// You can now use 'app' to access Firebase services, e.g., getFirestore(app), getAuth(app)
-
-
-// 2. INITIALIZE FIREBASE AND GET THE AUTH OBJECT
+// Initialize Firebase and get auth reference (using compat SDK from HTML)
 firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth(); 
-// Ensure you have the handleSignIn and handleSignUp functions defined here!
+const auth = firebase.auth();
+
+// Handle Sign In function
+function handleSignIn(email, password) {
+  auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log("User signed in successfully:", userCredential.user);
+      // Close the login popup after successful login
+      wrapper.classList.remove('active-popup');
+      wrapper.classList.remove('active');
+    })
+    .catch((error) => {
+      console.error("Sign in error:", error.message);
+      alert("Login failed: " + error.message);
+    });
+}
 
 
 registerLink.addEventListener('click', ()=> {
