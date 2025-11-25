@@ -17,9 +17,48 @@ const firebaseConfig = {
   measurementId: "G-MQWR1LM3H3"
 };
 
+// Mock Auth System (localStorage-based for testing)
+// In production, replace this with real Firebase authentication
+const mockAuth = {
+  users: JSON.parse(localStorage.getItem('mockAuthUsers') || '{}'),
+  
+  createUserWithEmailAndPassword(email, password) {
+    return new Promise((resolve, reject) => {
+      if (this.users[email]) {
+        reject(new Error('Firebase: Error (auth/email-already-in-use.)'));
+      } else if (!email || !password) {
+        reject(new Error('Firebase: Error (auth/invalid-email.)'));
+      } else {
+        this.users[email] = { email, password };
+        localStorage.setItem('mockAuthUsers', JSON.stringify(this.users));
+        console.log('Mock: User registered', email);
+        resolve({ user: { email, uid: 'mock_' + Date.now() } });
+      }
+    });
+  },
+  
+  signInWithEmailAndPassword(email, password) {
+    return new Promise((resolve, reject) => {
+      if (this.users[email] && this.users[email].password === password) {
+        console.log('Mock: User signed in', email);
+        resolve({ user: { email, uid: 'mock_' + Date.now() } });
+      } else {
+        reject(new Error('Firebase: Error (auth/user-not-found.)'));
+      }
+    });
+  }
+};
+
 // Initialize Firebase and get auth reference (using compat SDK from HTML)
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+let auth = null;
+try {
+  firebase.initializeApp(firebaseConfig);
+  auth = firebase.auth();
+  console.log('Firebase initialized');
+} catch (e) {
+  console.warn('Firebase init failed, using mock auth:', e.message);
+  auth = mockAuth;
+}
 
 // Handle Sign In function
 function handleSignIn(email, password) {
@@ -29,6 +68,7 @@ function handleSignIn(email, password) {
       // Close the login popup after successful login
       wrapper.classList.remove('active-popup');
       wrapper.classList.remove('active');
+      alert('Login successful!');
     })
     .catch((error) => {
       console.error("Sign in error:", error.message);
@@ -44,6 +84,7 @@ function handleSignUp(email, password) {
             // Close the popup after successful registration
             wrapper.classList.remove('active-popup');
             wrapper.classList.remove('active');
+            alert('Registration successful!');
         })
         .catch((error) => {
             console.error("Sign up error:", error.message);
