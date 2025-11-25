@@ -127,15 +127,40 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerForm) {
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const emailInput = document.getElementById('register-email');
-            const passwordInput = document.getElementById('register-password');
-            if (emailInput && passwordInput) {
-                const email = emailInput.value;
-                const password = passwordInput.value;
-                handleSignUp(email, password);
-            } else {
-                console.error("Register form elements not found in the DOM.");
+            // Prefer an element with id 'register-email' if present
+            let emailEl = document.getElementById('register-email');
+            // Otherwise try to find an <input type="email"> inside the register form
+            if (!emailEl) {
+                emailEl = registerForm.querySelector('input[type="email"]');
             }
+            const usernameEl = document.getElementById('register-username');
+            const passwordEl = document.getElementById('register-password');
+
+            if (!passwordEl) {
+                console.error('Register password element not found.');
+                alert('Registration failed: missing password field.');
+                return;
+            }
+
+            const password = passwordEl.value;
+
+            let email = null;
+            if (emailEl) {
+                email = emailEl.value;
+            } else if (usernameEl) {
+                // fallback: synthesize an email from username for testing only
+                const username = usernameEl.value || 'user';
+                email = `${username}@example.invalid`;
+                console.warn('No register-email id found; using synthetic email:', email);
+            }
+
+            if (!email) {
+                console.error('No email or username available for registration.');
+                alert('Registration requires an email address.');
+                return;
+            }
+
+            handleSignUp(email, password);
         });
     }
 });
