@@ -144,24 +144,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form'); 
 
     if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault(); 
-            
-            // Get values using the new IDs from the HTML
-            const emailInput = document.getElementById('login-email');
-            const passwordInput = document.getElementById('login-password');
-            
-            // Validate that the elements exist before proceeding
-            if (emailInput && passwordInput) {
-                const email = emailInput.value;
-                const password = passwordInput.value;
-                
-                // Call your authentication function
-                handleSignIn(email, password); 
-            } else {
-                console.error("Login form elements not found in the DOM.");
-            }
-        });
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault(); 
+
+        
+        const usernameInput = document.getElementById('login-username');
+        const passwordInput = document.getElementById('login-password');
+
+        if (!passwordInput) {
+          console.error('Login password element not found.');
+          alert('Login failed: missing password field.');
+          return;
+        }
+
+        const password = passwordInput.value;
+        let email = null;
+
+        if (emailInput && emailInput.value) {
+          email = emailInput.value;
+        } else if (usernameInput && usernameInput.value) {
+          const usernameVal = usernameInput.value.trim();
+          // If the user typed an email into the username field, use it directly
+          if (usernameVal.includes('@')) {
+            email = usernameVal;
+          } else {
+            // Synthesize the email used by the registration fallback
+            email = `${usernameVal}@example.invalid`;
+          }
+        } else {
+          alert('Please enter your email or username.');
+          return;
+        }
+
+        handleSignIn(email, password);
+      });
     }
 
     // --- REGISTER FORM LISTENER ---
