@@ -5,15 +5,16 @@ const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
 // FIREBASE CONFIGURATION
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDhbS1LBXNdFaKZBpKens4qPoeuEfjfSv8", // You'll get this from the Firebase Console
+  apiKey: "AIzaSyDhbS1LBXNdFaKZBpKens4qPoeuEfjfSv8",
   authDomain: "vvp1-f584e.firebaseapp.com",
   databaseURL: "https://vvp1-f584e-default-rtdb.firebaseio.com",
   projectId: "vvp1-f584e",
-  storageBucket: "vvp1-f584e.appspot.com",
-  messagingSenderId: "638951264034", // You'll get this from the Firebase Console
-  appId: "1:638951264034:web:aab94b39195db687bb9f7b", // You'll get this from the Firebase Console
-  measurementId: "G-514175645"
+  storageBucket: "vvp1-f584e.firebasestorage.app",
+  messagingSenderId: "638951264034",
+  appId: "1:638951264034:web:aab94b39195db687bb9f7b",
+  measurementId: "G-MQWR1LM3H3"
 };
 
 // Initialize Firebase and get auth reference (using compat SDK from HTML)
