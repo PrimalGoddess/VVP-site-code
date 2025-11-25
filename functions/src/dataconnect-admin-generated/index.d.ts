@@ -1,4 +1,4 @@
-import { ConnectorConfig, DataConnect, OperationOptions, ExecuteOperationResponse } from 'firebase-admin/data-connect';
+import {ConnectorConfig, DataConnect, OperationOptions, ExecuteOperationResponse} from "firebase-admin/data-connect";
 
 export const connectorConfig: ConnectorConfig;
 
@@ -51,17 +51,17 @@ export interface GetUserByEmailVariables {
 
 export interface PasswordResetToken_Key {
   id: UUIDString;
-  __typename?: 'PasswordResetToken_Key';
+  __typename?: "PasswordResetToken_Key";
 }
 
 export interface Session_Key {
   id: UUIDString;
-  __typename?: 'Session_Key';
+  __typename?: "Session_Key";
 }
 
 export interface User_Key {
   id: UUIDString;
-  __typename?: 'User_Key';
+  __typename?: "User_Key";
 }
 
 /** Generated Node Admin SDK operation action function for the 'CreateUser' Mutation. Allow users to execute without passing in DataConnect. */
