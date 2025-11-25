@@ -12,6 +12,10 @@
     font-style: normal;
 }
 
+#protected-content-wrapper {
+    display: none; /* Hide the content block by default */
+}
+
 .main-container {
     width: 100%; /* Keeps full width behavior when needed */
     max-width: 100%;

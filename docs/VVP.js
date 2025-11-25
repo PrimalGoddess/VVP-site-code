@@ -17,6 +17,52 @@ const firebaseConfig = {
   measurementId: "G-MQWR1LM3H3"
 };
 
+// --- In VVP.js / js/main.js ---
+
+const PROTECTED_PAGES = [
+    '/Den.html',      // Add the path for every page you want to protect
+    '/Bazaar.html',
+    '/Forums.html',
+    '/Guild.html',
+    '/Laboratory.html',
+    '/Library.html',
+    '/Mini-Games.html',
+];
+
+function checkAuthenticationStatus() {
+    // Get the current page path (e.g., "/Den.html")
+    const currentPagePath = window.location.pathname; 
+    
+    // Check if the current page is one of the protected ones
+    const isProtected = PROTECTED_PAGES.some(p => currentPagePath.endsWith(p));
+
+    // If the page is not protected, stop here.
+    if (!isProtected) {
+        return;
+    }
+
+    // Use the Firebase listener to check the state
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in. Allow access.
+            console.log("User is signed in:", user.email);
+            // Optional: Show protected content elements that were hidden by default (see Step 3)
+            showProtectedContent(); 
+
+        } else {
+            // User is NOT signed in. Deny access.
+            console.warn("User is not signed in. Redirecting...");
+            
+            // Redirect the user to the public login/welcome page
+            window.location.replace("index.html"); 
+        }
+    });
+}
+
+// Run the check immediately when the script loads
+checkAuthenticationStatus();
+
+
 // Mock Auth System (localStorage-based for testing)
 // In production, replace this with real Firebase authentication
 const mockAuth = {
