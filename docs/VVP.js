@@ -36,6 +36,13 @@ function checkAuthenticationStatus() {
     // Check if the current page is one of the protected ones
     const isProtected = PROTECTED_PAGES.some(p => currentPagePath.endsWith(p));
 
+    function showProtectedContent() {
+    const wrapper = document.getElementById('protected-content-wrapper');
+    if (wrapper) {
+        wrapper.style.display = 'block'; // Or 'flex', depending on original layout
+    }
+}
+
     // If the page is not protected, stop here.
     if (!isProtected) {
         return;
