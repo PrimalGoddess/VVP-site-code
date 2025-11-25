@@ -1,8 +1,31 @@
 {
   "emulators": {
     "dataconnect": {
-      "dataDir": "dataconnect/.dataconnect/pgliteData"
-    }
+      "dataDir": "dataconnect/.dataconnect/pgliteData",
+      "port": 9399
+    },
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
   },
   "dataconnect": {
     "source": "dataconnect"
@@ -24,7 +47,6 @@
       "source": "functions"
     },
     {
-      "source": "Vakaroria",
       "codebase": "vvp-firebase",
       "disallowLegacyRuntimeConfig": true,
       "ignore": [
@@ -36,7 +58,8 @@
       ],
       "predeploy": [
         "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
+      ],
+      "source": "Vakaroria"
     }
   ],
   "hosting": {

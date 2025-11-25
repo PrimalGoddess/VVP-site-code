@@ -3,7 +3,7 @@ import {validateAdminArgs} from "firebase-admin/data-connect";
 const connectorConfig = {
   connector: "example",
   serviceId: "vvp-site-code",
-  location: "us-east4"
+  location: "us-east4",
 };
 const _connectorConfig = connectorConfig;
 export {_connectorConfig as connectorConfig};
