@@ -147,8 +147,8 @@ function initAuthHandlers() {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const emailInput = document.getElementById('login-email');
       const usernameInput = document.getElementById('login-username');
+      const emailInput = document.getElementById('login-email');
       const passwordInput = document.getElementById('login-password');
 
       if (!passwordInput) {
