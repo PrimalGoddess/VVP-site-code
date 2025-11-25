@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loginForm.addEventListener('submit', (e) => {
         e.preventDefault(); 
 
-        
+        const emailInput = document.getElementById('login-email');
         const usernameInput = document.getElementById('login-username');
         const passwordInput = document.getElementById('login-password');
 
