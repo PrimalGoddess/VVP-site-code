@@ -1,5 +1,11 @@
 {
   "projects": {
     "default": "vvp1-f584e"
+  },
+  "targets": {},
+  "etags": {
+    "vvp1-f584e": {
+      "extensionInstances": {}
+    }
   }
 }
