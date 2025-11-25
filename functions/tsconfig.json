@@ -9,6 +9,7 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
+    "noEmitOnError": false,
     "target": "es2017",
     "skipLibCheck": true,
     "esModuleInterop": true,
