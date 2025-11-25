@@ -35,6 +35,21 @@ function handleSignIn(email, password) {
     });
 }
 
+// Handle Sign Up function (creates a new user)
+function handleSignUp(email, password) {
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            console.log("User registered successfully:", userCredential.user);
+            // Close the popup after successful registration
+            wrapper.classList.remove('active-popup');
+            wrapper.classList.remove('active');
+        })
+        .catch((error) => {
+            console.error("Sign up error:", error.message);
+            alert("Registration failed: " + error.message);
+        });
+}
+
 
 registerLink.addEventListener('click', ()=> {
     wrapper.classList.add('active');
@@ -107,5 +122,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- You would add the REGISTER FORM LISTENER here using 'register-form' ID ---
+    // --- REGISTER FORM LISTENER ---
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('register-email');
+            const passwordInput = document.getElementById('register-password');
+            if (emailInput && passwordInput) {
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                handleSignUp(email, password);
+            } else {
+                console.error("Register form elements not found in the DOM.");
+            }
+        });
+    }
 });
