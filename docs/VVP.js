@@ -4,6 +4,32 @@ const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
+// 1. YOUR FIREBASE CONFIGURATION OBJECT
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY", // You'll get this from the Firebase Console
+  authDomain: "vvp1-f584e.firebaseapp.com",
+  databaseURL: "https://vvp1-f584e-default-rtdb.firebaseio.com",
+  projectId: "vvp1-f584e",
+  storageBucket: "vvp1-f584e.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID", // You'll get this from the Firebase Console
+  appId: "YOUR_APP_ID", // You'll get this from the Firebase Console
+  measurementId: "G-514175645"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// You can now use 'app' to access Firebase services, e.g., getFirestore(app), getAuth(app)
+
+
+// 2. INITIALIZE FIREBASE AND GET THE AUTH OBJECT
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth(); 
+// Ensure you have the handleSignIn and handleSignUp functions defined here!
+
+
 registerLink.addEventListener('click', ()=> {
     wrapper.classList.add('active');
 });
@@ -48,3 +74,32 @@ function showReply(){
     var replyArea = document.getElementById("reply-area");
     replyArea.classList.remove("hide");
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // --- LOGIN FORM LISTENER ---
+    const loginForm = document.getElementById('login-form'); 
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            
+            // Get values using the new IDs from the HTML
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-password');
+            
+            // Validate that the elements exist before proceeding
+            if (emailInput && passwordInput) {
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                
+                // Call your authentication function
+                handleSignIn(email, password); 
+            } else {
+                console.error("Login form elements not found in the DOM.");
+            }
+        });
+    }
+
+    // --- You would add the REGISTER FORM LISTENER here using 'register-form' ID ---
+});
