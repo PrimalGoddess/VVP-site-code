@@ -17,14 +17,17 @@ const MAX_BATCH_SIZE = 10; // Use a smaller batch size for robustness
 
 // --- Database Connection Pool ---
 const pool = new Pool({
-    host: process.env.PG_HOST,
+    host: process.env.PG_HOST, // This must be 'localhost' now
     user: process.env.PG_USER,
     password: process.env.PG_PASSWORD,
     database: process.env.PG_DATABASE,
-    port: 5432,
+    port: 5432, // Default PostgreSQL port
+    // This is the CRITICAL line for Namecheap environments:
     ssl: {
-        rejectUnauthorized: false // This disables strict certificate validation
-    }
+        rejectUnauthorized: false
+    },
+    // Keep the timeout for diagnosis, but it might not be needed now
+    connectionTimeoutMillis: 5000 
 });
 
 /**
@@ -49,7 +52,13 @@ async function migrateUsers() {
         console.log(`Found ${usersData.length} users to migrate.`);
         
         // Connect to the database
-        client = await pool.connect();
+       try {
+            client = await pool.connect();
+        } catch (e) {
+            console.error('❌ CONNECTION FAILED WITH ERROR:', e.message);
+            // This is the error that MUST now show the PostgreSQL refusal reason
+            return; 
+        }
         
         // --- STEP 2: ISOLATE AND TEST THE FIRST USER INSERTION ---
         const firstUser = usersData[0];
