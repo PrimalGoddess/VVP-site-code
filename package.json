@@ -1,6 +1,30 @@
 {
   "dependencies": {
-    "firebase": "^10.14.1",
-    "firebaseui": "^6.1.0"
-  }
+    "dotenv": "^17.2.3",
+    "firebase": "^12.6.0",
+    "firebaseui": "^6.1.0",
+    "pg": "^8.16.3"
+  },
+  "name": "vvp-site-code",
+  "version": "1.0.0",
+  "description": "This repository is meant for the Vakaroria Virtual Pets website development.\r This code is not for general use, it is copyright protected and should only be used by Galactic Games Developers.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrimalGoddess/VVP-site-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PrimalGoddess/VVP-site-code/issues"
+  },
+  "homepage": "https://github.com/PrimalGoddess/VVP-site-code#readme"
 }
