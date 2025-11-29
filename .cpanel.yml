@@ -1,11 +1,6 @@
 ---
-# This file defines the deployment steps for your NameCheap cPanel hosting.
 deployment:
   tasks:
-    # 1. Define the deployment path variable (DEPLOYPATH)
-    # This path is the document root for your main website.
-    - export DEPLOYPATH=/home/vakajcrn/public_html/
-    
-    # 2. Copy all files and directories from the repository to the server's document root
-    # The /bin/cp -R command recursively copies everything (*).
-    - /bin/cp -R main $DEPLOYPATH
+    - export DEPLOYPATH=/home/vakajcrn/public_html/ && - /bin/cp -R main $DEPLOYPATH
+
+   
