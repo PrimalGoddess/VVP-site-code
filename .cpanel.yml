@@ -8,4 +8,4 @@ deployment:
     
     # 2. Copy all files and directories from the repository to the server's document root
     # The /bin/cp -R command recursively copies everything (*).
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R main $DEPLOYPATH
