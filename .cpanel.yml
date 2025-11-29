@@ -1,6 +1,9 @@
 ---
 deployment:
-  tasks:
-    - export DEPLOYPATH=/home/vakajcrn/public_html/ && - /bin/cp -R main $DEPLOYPATH
 
-   
+  tasks:
+  
+    - export DEPLOYPATH=/home/vakajcrn/public_html/
+    - /bin/cp -R main $DEPLOYPATH
+
+  
